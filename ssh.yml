@@ -1,0 +1,9 @@
+---
+ - hosts: freebsd
+   connection: paramiko
+   become: yes
+   become_method: su
+   become_user: root
+   
+   roles:
+    - Robilou.Ssh
