@@ -2,8 +2,8 @@
 galaxy_info:
   author: Robilou
   description: Ansible ssh role 
-  company: your company (optional)
-  license: license (GPLv2, CC-BY, etc)
+  company: Robilou
+  license: BSD
   min_ansible_version: 1.9
   
   platforms:
@@ -20,4 +20,6 @@ galaxy_info:
 
 dependencies: 
  - Robilou.Python2
+ - Robilou.Sudo
+ - Robilou.Common
   
