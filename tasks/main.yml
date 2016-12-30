@@ -2,29 +2,32 @@
 # tasks file for ssh
 - name: CREATE DIR /etc/ssh/authorized_key
   file:
-    path=/etc/ssh/authorized_keys
-    state=directory
-    owner=root
-    group=wheel
-    mode=0755
+    path: /etc/ssh/authorized_keys
+    state: directory
+    owner: root
+    group: wheel
+    mode: 0755
   
 - name: UPLOAD USER KEY
   copy:
-    src={{item}}.pub
-    dest=/etc/ssh/authorized_keys/
-    owner=root
-    group=wheel
-    mode=0644
+    src: '{{item}}.pub'
+    dest: /etc/ssh/authorized_keys/
+    owner: root
+    group: wheel
+    mode: 0644
   with_items: '{{sshusers}}'
+
+  tags:
+    - update_key
   
 - name: UPDATE sshd.config
   template:
-    backup=yes 
-    src=sshd_config.j2 
-    dest=/etc/ssh/sshd_config
-    owner=root 
-    group=wheel 
-    mode=0644 
-    validate='/usr/sbin/sshd -T -f %s'
+    backup: yes 
+    src: sshd_config.j2 
+    dest: /etc/ssh/sshd_config
+    owner: root 
+    group: wheel 
+    mode: 0644 
+    validate: '/usr/sbin/sshd -T -f %s'
     
   notify: restart sshd 
