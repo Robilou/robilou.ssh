@@ -19,7 +19,7 @@ galaxy_info:
     - system
 
 dependencies: 
- - Robilou.Python2
- - Robilou.Sudo
- - Robilou.Common
+# - Robilou.Python2
+# - Robilou.Sudo
+# - Robilou.Common
   
